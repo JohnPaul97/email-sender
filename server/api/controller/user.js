@@ -46,19 +46,21 @@ function login (req, res, next) {
     User.find({username}, function(err, response) {
         if(err){
             console.log("err " + username);
+            
+            return next;
         }
 
         if(response.length === 0){
             console.log('no such user ' + username);
-            next();
+            return next();
             // return next({message: "Inexistent user with that email!", status: 404});
         }
 
         let user = response[0];
-
+            
         if(user.password !== password){
-            next();
             console.log('incorrect password');
+            return next();
         }
 
         return res.json({data: user});
