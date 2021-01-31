@@ -1,4 +1,5 @@
 const User = require('../model/user');
+const { use } = require('../routes/users');
 
 function getUsers(req, res, next) {
     console.log('GET users from controller');
@@ -18,28 +19,53 @@ function getUsers(req, res, next) {
     })
 }
 
-function createUsers(req, res, next) {
-    console.log('POST users from controller');
-    console.log('POST received ' + req.body);
+// function createUsers(req, res, next) {
+//     console.log('POST users from controller');
+//     console.log('POST received ' + req.body);
 
-    const user = new User({ username: "ion", password: "ion" });
+//     const user = new User({ username: "ion", password: "ion" });
 
-    user.save(function (err, response) {
-        if (err) {
-            return res.status(400).json({
-                status: 'Error',
-                message: 'On create users'
-            })
-            // console.log(err);
+//     user.save(function (err, response) {
+//         if (err) {
+//             return res.status(400).json({
+//                 status: 'Error',
+//                 message: 'On create users'
+//             })
+//             // console.log(err);
+//         }
+
+//         return res.json({ data: response });
+//     })
+//     console.log('after save');
+//     // return res.json({message: 'message post'});
+// }
+
+function login (req, res, next) {
+    const {username, password} = req.body;
+
+    User.find({username}, function(err, response) {
+        if(err){
+            console.log("err " + username);
         }
 
-        return res.json({ data: response });
+        if(response.length === 0){
+            console.log('no such user ' + username);
+            next();
+            // return next({message: "Inexistent user with that email!", status: 404});
+        }
+
+        let user = response[0];
+
+        if(user.password !== password){
+            next();
+            console.log('incorrect password');
+        }
+
+        return res.json({data: user});
     })
-    console.log('after save');
-    // return res.json({message: 'message post'});
 }
 
 module.exports = {
     getUsers : getUsers,
-    createUsers: createUsers
+    login: login
 }

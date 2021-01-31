@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import axios from '../axios/axios';
 import axiosClient from '../axios/axios';
 import apiPaths from './api';
 
@@ -21,7 +20,7 @@ function Login() {
     }
 
     const login = () => {
-        axiosClient.get(apiPaths.login).then((res)=> {
+        axiosClient.post(apiPaths.login, {username: username, password: password}).then((res)=> {
             console.log(res);
         })
     }

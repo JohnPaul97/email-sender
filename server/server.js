@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 9997;
 
+require('./config/express').init(app);
 require('./api/routes').init(app);
-const initMongoose = require('./mongoose');
+require('./mongoose');
 
 app.listen(port, function () {
     console.log('welcome to my application!');
