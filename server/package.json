@@ -1,16 +1,16 @@
 {
-  "name": "distcalc",
+  "name": "server",
   "version": "1.0.0",
-  "description": "app that ccomputes distance between two locations on globe",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "johnpaul97",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.11.13",
-    "request": "^2.88.2"
+    "mongoose": "^5.11.14"
   }
 }

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var configs = require('../../configs.json');
+var configs = require('../configs.js');
 
 mongoose.connect(configs.mongoUrl, {
     useNewUrlParser: true,
