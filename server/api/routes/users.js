@@ -1,16 +1,8 @@
 const router = require('express').Router();
 const userCtr = require('../controller/user');
+const corsSetup = require('../../cors/cors');
 
-const cors = (req, res, next) => {
-    //middleware for adding cors header
-    console.log("middleware cors")
-    
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    
-    next();
-};
-
-router.get('/users', cors, userCtr.getUsers);
-router.post('/users', userCtr.createUsers);
+router.get('/users', corsSetup, userCtr.getUsers);
+router.post('/users', corsSetup, userCtr.createUsers);
 
 module.exports = router;
