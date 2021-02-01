@@ -12,9 +12,11 @@ const checkToken = (req, res, next) => {
     
     jwt.verify(req.headers.authorization.substring(7), tokenSecret, (err, verifiedJwt) => {
         if (err) {
-            next("invalid token, please login again!");
+            return res.status(401).json({message: "invalid token, please login again!"});
+            // return next();
+            // next("invalid token, please login again!");
         }
-        next();
+        return next();
     })
 }
 

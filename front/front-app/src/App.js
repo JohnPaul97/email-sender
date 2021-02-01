@@ -6,8 +6,6 @@ import MainPage from './components/MainPage.js';
 const TOKEN = 'token;'
 
 function App() {
-  // const [token, setToken] = userLocalStorage(undefined);
-
   const token = localStorage.getItem(TOKEN);
 
   const setToken = (token) => {

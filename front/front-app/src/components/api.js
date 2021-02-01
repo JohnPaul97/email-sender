@@ -1,4 +1,5 @@
 export default {
     login: '/login',
-    getUsers: '/users'
+    getUsers: '/users',
+    sendEmail: '/email'
 }
