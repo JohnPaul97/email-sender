@@ -1,5 +1,3 @@
-'use strict'
-
 const nodemailer = require('nodemailer');
 const config = require('./config');
 
@@ -24,11 +22,8 @@ function sendEmail(payload) {
         if (err) {
             console.log("error when trying to send an email: ", err);
         }
+        console.log("email send");
     });
-
-    console.log("email send");
-
-    return 'Email Sent!';
 }
 
 module.exports = { sendEmail };
