@@ -9,12 +9,13 @@ const generateToken = (userId) => {
 
 const checkToken = (req, res, next) => {
     if (req.path === '/login') return next();
-    
+
+    console.log(req.headers.authorization.substring(7));
+
     jwt.verify(req.headers.authorization.substring(7), tokenSecret, (err, verifiedJwt) => {
         if (err) {
+            console.log("invalid token");
             return res.status(401).json({message: "invalid token, please login again!"});
-            // return next();
-            // next("invalid token, please login again!");
         }
         return next();
     })

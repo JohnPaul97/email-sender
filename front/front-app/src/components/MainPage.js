@@ -6,7 +6,7 @@ function MainPage() {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [content, setContent] = useState('');
-    
+
     function handleEmail(event) {
         setEmail(event.target.value);
     }
@@ -20,7 +20,7 @@ function MainPage() {
     }
 
     function sendEmail() {
-        axiosClient.post(apiPaths.sendEmail, {email: email, subject: subject, content: content}).then((res)=>{
+        axiosClient.post(apiPaths.sendEmail, { email: email, subject: subject, content: content }).then((res) => {
             console.log(res);
         })
     }
@@ -29,7 +29,7 @@ function MainPage() {
         <div>
             Address:<input type="text" onChange={handleEmail} value={email}></input>
             Subject:<input type="text" onChange={handleSubject} value={subject}></input>
-            Content:<textarea onChange={handleContent} value={content}/>
+            Content:<textarea onChange={handleContent} value={content} />
             <button onClick={sendEmail}>Send Email</button>
         </div>
     );

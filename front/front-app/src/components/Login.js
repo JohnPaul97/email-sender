@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axiosClient from '../axios/axios';
 import apiPaths from './api';
+import { useHistory } from 'react-router-dom';
 
-
-function Login({ setToken }) {
-
+function Login() {
+    const history = useHistory();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -22,9 +22,16 @@ function Login({ setToken }) {
 
     const login = () => {
         axiosClient.post(apiPaths.login, { username: username, password: password }).then((res) => {
-            console.log(res);
+            console.log(res.data.token);
+            history.push('/email');
+            
             setToken(res.data.token);
         })
+    }
+
+    const setToken = async(token) => {
+        localStorage.setItem('token', token); 
+        window.location.reload();
     }
 
     return (

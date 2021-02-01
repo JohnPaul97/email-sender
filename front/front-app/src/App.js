@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Login from './components/Login.js';
 import MainPage from './components/MainPage.js';
-
-const TOKEN = 'token;'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
-  const token = localStorage.getItem(TOKEN);
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Login/>
+        </Route>
 
-  const setToken = (token) => {
-    localStorage.setItem(TOKEN, token);
-  }
-
-  console.log(token);
-
-  if (token === null) {
-    return <Login setToken={setToken} />
-  }
-
-  else {
-    return <MainPage />;
-  }
+        <Route path="/email">
+          <MainPage />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

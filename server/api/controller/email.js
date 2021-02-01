@@ -7,7 +7,7 @@ const sendEmail = (req, res, next) => {
 
     email.sendEmail(req.body);
 
-    return res.json({status: "accepted"});
+    return res.json({status: 201, message: "sent"});
 }
 
 module.exports = { sendEmail };
