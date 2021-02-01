@@ -1,5 +1,6 @@
 const User = require('../model/user');
-const { use } = require('../routes/users');
+const generateToken = require('../token').generateToken;
+
 
 function getUsers(req, res, next) {
     console.log('GET users from controller');
@@ -63,7 +64,7 @@ function login (req, res, next) {
             return next();
         }
 
-        return res.json({data: user});
+        return res.json({user: user, token: generateToken(user._id)});
     })
 }
 
