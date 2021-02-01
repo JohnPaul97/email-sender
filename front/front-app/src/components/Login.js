@@ -29,8 +29,8 @@ function Login({ setToken }) {
 
     return (
         <div>
-            <input type="text" onChange={handleOnChangeUsername} value={username}></input>
-            <input type="password" onChange={handleOnChangePassword} value={password}></input>
+            Username<input type="text" onChange={handleOnChangeUsername} value={username}></input>
+            Password<input type="password" onChange={handleOnChangePassword} value={password}></input>
             <button onClick={login}>Login</button>
         </div>
     );

@@ -27,9 +27,9 @@ function MainPage() {
 
     return (
         <div>
-            <input type="text" onChange={handleEmail} value={email}></input>
-            <input type="password" onChange={handleSubject} value={subject}></input>
-            <textarea onChange={handleContent} value={content}/>
+            Address:<input type="text" onChange={handleEmail} value={email}></input>
+            Subject:<input type="text" onChange={handleSubject} value={subject}></input>
+            Content:<textarea onChange={handleContent} value={content}/>
             <button onClick={sendEmail}>Send Email</button>
         </div>
     );
