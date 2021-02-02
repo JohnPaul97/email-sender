@@ -1,3 +1,5 @@
+console.log("starting email server...")
+
 var net = require('net');
 var emailsender = require('./sendEmail');
 
@@ -10,4 +12,4 @@ var server = net.createServer(function(socket) {
     })
 })
 
-server.listen(10000, '127.0.0.1');
+server.listen(10000, '0.0.0.0');

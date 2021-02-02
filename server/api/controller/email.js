@@ -1,9 +1,9 @@
-const { Socket } = require('dgram');
 var net = require('net');
 
 emailTcp = (req, res, next) => {
     var client = new net.Socket();
-    client.connect(10000, '127.0.0.1', function() {
+
+    client.connect(10000, 'email', function() {
         client.write(JSON.stringify(req.body));
     });
     

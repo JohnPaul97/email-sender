@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-console.log("in axios")
-console.log(localStorage.getItem('token'))
-
 const instance = axios.create({
     baseURL: 'http://localhost:9997',
     headers: {
@@ -11,7 +8,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.response.use((response) => response, (error) => {
-    if (error.response.status === 401) {
+    if (error.response && error.response.status === 401) {
         // await localStorage.removeItem('token');
         localStorage.clear();
         window.location = '/';
