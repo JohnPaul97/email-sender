@@ -8,7 +8,7 @@ var server = net.createServer(function(socket) {
         console.log("received from client "+ data);
         emailsender.sendEmail(JSON.parse(data));
         
-        socket.write("can stop");
+        socket.write("can stop client");
     })
 })
 

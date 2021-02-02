@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axiosClient from '../axios/axios';
 import apiPaths from './api';
 import { useHistory } from 'react-router-dom';

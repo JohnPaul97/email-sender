@@ -21,7 +21,6 @@ function MainPage() {
 
     function sendEmail() {
         axiosClient.post(apiPaths.sendEmail, { email: email, subject: subject, content: content }).then((res) => {
-            console.log(res);
         })
     }
 
